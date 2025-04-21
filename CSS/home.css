@@ -128,6 +128,99 @@ img {
 
 .hero-image {
   flex: 1;
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-bg-img {
+  width: 110%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.students-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.student {
+  position: absolute;
+  width: 150px;
+  height: auto;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+}
+
+.student-left {
+  left: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: slideInLeft 1s ease-out;
+  z-index: 2;
+}
+
+.student-middle {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: slideInTop 1s ease-out;
+  z-index: 3;
+}
+
+.student-right {
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: slideInRight 1s ease-out;
+  z-index: 2;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translate(-100%, -50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInTop {
+  from {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translate(100%, -50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
 }
 
 .hero h1 {
@@ -379,4 +472,60 @@ img {
   .path-card {
     width: 100%;
   }
+}
+
+/* -------------- container -------------- */
+.image-stack {
+  position: relative;
+  width: 600px; /* adjust to your layout */
+  height: 500px;
+  margin: 0 auto; /* or whatever positioning you like */
+}
+
+/* -------------- the golden arc -------------- */
+.arc {
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  border: 20px solid #dba13a; /* gold ring color */
+  border-radius: 50%;
+  top: -200px; /* nudge it up so only bottom shows */
+  left: -100px; /* shift left under the pills */
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+/* -------------- each pill -------------- */
+.pill {
+  position: absolute;
+  width: 150px;
+  height: 400px;
+  top: 50px;
+  border-radius: 50px; /* pill shape */
+  overflow: hidden; /* crop the image to the pill */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* backgrounds and stacking order */
+.pill-1 {
+  background: #47b39c;
+  left: 100px;
+  z-index: 2;
+}
+.pill-2 {
+  position: absolute;
+  width: 150px;
+  height: 480px;
+  border-radius: 50px; /* pill shape */
+  overflow: hidden; /* crop the image to the pill */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: #83bfcb;
+  top: 0;
+  left: 300px;
+  z-index: 3;
+}
+.pill-3 {
+  background: #dba13a;
+  left: 500px;
+  z-index: 2;
 }
