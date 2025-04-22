@@ -187,13 +187,33 @@ img {
   z-index: 2;
 }
 
+@keyframes slideInLeft {
+  from {
+    transform: translate(-2000%, -50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+}
+
 .student-middle {
   left: 7%;
   top: 30px;
   right: 0%;
   transform: translate(-50%, -50%);
-  -webkit-animation: bar 1s ease;
+  -webkit-animation: top-bottom 1s ease;
   z-index: 3;
+}
+
+@keyframes top-bottom {
+  0% {
+    top: -500px;
+  }
+  100% {
+    top: 30px;
+  }
 }
 
 .student-right {
@@ -204,6 +224,18 @@ img {
   animation: slideInRight 1.3s ease-out;
   z-index: 2;
 }
+
+@keyframes slideInRight {
+  from {
+    transform: translate(2000%, -50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+}
+
 /* -------------- container -------------- */
 .image-stack {
   position: relative;
@@ -241,37 +273,6 @@ img {
   background: #dba13a;
   left: 435px;
   z-index: 2;
-}
-
-@keyframes slideInLeft {
-  from {
-    transform: translate(-2000%, -50%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(-50%);
-    opacity: 1;
-  }
-}
-
-@keyframes bar {
-  0% {
-    top: -500px;
-  }
-  100% {
-    top: 30px;
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    transform: translate(2000%, -50%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(-50%);
-    opacity: 1;
-  }
 }
 
 .hero h1 {
