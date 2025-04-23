@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coursenix</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/courses.css">
+</head>
+<body>
+
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+        <a class="navbar-brand" href="#">cousenix</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <h1>Let's Start Your Journey</h1>
+        <p class="mb-0">Explore and book courses online with our easy-to-use platform</p>
+    </div>
+</section>
+
+<!-- Filter Section -->
+<div class="container py-4">
+    <div class="row g-3">
+        <div class="col-md-4">
+            <label class="small mb-1">Subject</label>
+            <select class="form-select">
+                <option selected>All subjects</option>
+                <option>Mathematics</option>
+                <option>Science</option>
+                <option>English</option>
+                <option>Chemistry</option>
+                <option>Physics</option>
+                <option>Arabic</option>
+                <option>social studies</option>
+            </select>
+        </div>
+        <div class="col-md-4 ">
+            <label class="small mb-1">Grade</label>
+            <select class="form-select">
+                <option selected>All Grades</option>
+                <option>Grades 7</option>
+                <option>Grades 8</option>
+                <option>Grades 9</option>
+                <option>Grades 10</option>
+                <option>Grades 11</option>
+                <option>Grades 12</option>
+
+            </select>
+        </div>
+        <div class="col-md-4">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" class="form-control search-input" placeholder="Search by teacher name">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Course Cards -->
+<div class="container py-4">
+    <div class="row g-4">
+        <!-- Mathematics Course -->
+        <div class="col-lg-4 col-md-6">
+            <div class="course-card">
+                <img src="/assets/course1.svg" alt="Mathematics course" class="course-img ">
+                <div class="course-content">
+                    <div class="p-one">
+                        <h5 class="mb-0">Mathematics</h5>
+                        <span class="course-price">$59.99</span>
+                    </div>
+                    <p class="course-grade mb-2">Grades 7-9</p>
+                    <p class="card-text">Build a strong foundation in essential mathematical concepts through interactive lessons and practice problems.</p>
+                    <div class="p-one">
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">
+                                <img src="/assets/teacher1.svg" alt="Teacher">
+                            </div>
+                            <div>
+                                <div class="teacher-name">Mr. Ahmed Hassan</div>
+                            </div>
+                        </div>
+                        <button class="enroll-btn">Enroll Now</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- Science Course -->
+        <div class="col-lg-4 col-md-6">
+            <div class="course-card">
+                <img src="/assets/course2.svg" alt="Science course" class="course-img">
+                <div class="course-content">
+                    <div class="p-one">
+                        <h5 class="mb-0">Science</h5>
+                        <span class="course-price">$35.99</span>
+                    </div>
+                    <p class="course-grade mb-2">Grade 6</p>
+                    <p class="card-text">Explore physics, chemistry, and biology with hands-on experiments and real-world applications in an experiential way.</p>
+                    <div class="p-one">
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">
+                                <img src="/assets/teacher2.svg" alt="Teacher">
+                            </div>
+                            <div>
+                                <div class="teacher-name">Mrs. Laura Bennett</div>
+                            </div>
+                        </div>
+                    <button class="enroll-btn">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- English Course -->
+        <div class="col-lg-4 col-md-6">
+            <div class="course-card">
+                <img src="/assets/course3.svg" alt="English course" class="course-img">
+                <div class="course-content">
+                    <div class="p-one">
+                        <h5 class="mb-0">English</h5>
+                        <span class="course-price">$45.99</span>
+                    </div>
+                    <p class="course-grade mb-2">Grades 5-9</p>
+                    <p class="card-text">Strengthen reading comprehension, grammar, and creative writing skills through engaging texts and activities.</p>
+                    <div class="p-one">
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">
+                                <img src="/assets/teacher3.svg" alt="Teacher">
+                            </div>
+                            <div>
+                                <div class="teacher-name">Ms. Emily Carter</div>
+                            </div>
+                        </div>
+                        <button class="enroll-btn">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chemistry Course -->
+        <div class="col-lg-4 col-md-6">
+            <div class="course-card">
+                <img src="/assets/course4.svg" alt="Chemistry course" class="course-img">
+                <div class="course-content">
+                    <div class="p-one">
+                        <h5 class="mb-0">Chemistry</h5>
+                        <span class="course-price">$79.99</span>
+                    </div>
+                    <p class="course-grade mb-2">Grade 11</p>
+                    <p class="card-text">Investigate the wonders of matter, chemical reactions, and the periodic table while performing exciting laboratory experiments.</p>
+                    <div class="p-one">
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">
+                                <img src="/assets/teacher4.svg" alt="Teacher">
+                            </div>
+                            <div>
+                                <div class="teacher-name">Mr.Mohamed Saad</div>
+                            </div>
+                        </div>
+                        <button class="enroll-btn">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Physics Course -->
+        <div class="col-lg-4 col-md-6">
+            <div class="course-card">
+                <img src="/assets/course5.svg" alt="Physics course" class="course-img">
+                <div class="course-content">
+                    <div class="p-one">
+                        <h5 class="mb-0">Physics</h5>
+                        <span class="course-price">$65.99</span>
+                    </div>
+                    <p class="course-grade mb-2">Grade 11-12</p>
+                    <p class="card-text">Uncover the fundamental principles of motion, energy and the universe complemented by interactive experiments and simulations.</p>
+                    <div class="p-one">
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">
+                                <img src="/assets/teacher5.svg" alt="Teacher">
+                            </div>
+                            <div>
+                                <div class="teacher-name">Mr.Khaled Fouad</div>
+                            </div>
+                        </div>
+                        <button class="enroll-btn">Enroll Now</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pure Mathematics Course -->
+        <div class="col-lg-4 col-md-6">
+            <div class="course-card">
+                <img src="/assets/course6.svg" alt="Pure Mathematics course" class="course-img">
+                <div class="course-content">
+                    <div class="p-one">
+                        <h5 class="mb-0">Pure Mathematics</h5>
+                        <span class="course-price">$80.00</span>
+                    </div>
+                    <p class="course-grade mb-2">Grade 11-12</p>
+                    <p class="card-text">Dive deep into advanced topics like calculus, algebra, and number theory while sharpening problem-solving and reasoning abilities.</p>
+                    <div class="p-one">
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">
+                                <img src="/assets/teacher6.svg" alt="Teacher">
+                            </div>
+                            <div>
+                                <div class="teacher-name">Mr.Ahmed Khaled</div>
+                            </div>
+                        </div>
+                        <button class="enroll-btn" disabled>Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Arabic Course -->
+        <div class="col-lg-4 col-md-6">
+            <div class="course-card">
+                <img src="/assets/course7.svg" alt="Arabic course" class="course-img">
+                <div class="course-content">
+                    <div class="p-one">
+                        <h5 class="mb-0">Arabic</h5>
+                        <span class="course-price">$49.99</span>
+                    </div>
+                    <p class="course-grade mb-2">Grades 7-8</p>
+                    <p class="card-text">Develop a deep appreciation of the Arabic language through comprehensive lessons in grammar, vocabulary, literature, and creative writing.</p>
+                    <div class="p-one">
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">
+                                <img src="/assets/teacher11.svg" alt="Teacher">
+                            </div>
+                            <div>
+                                <div class="teacher-name">Ms.Hala Kamel</div>
+                            </div>
+                        </div>
+                        <button class="enroll-btn">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Applied Mathematics Course -->
+        <div class="col-lg-4 col-md-6">
+            <div class="course-card">
+                <img src="/assets/course8.svg" alt="Applied Mathematics course" class="course-img">
+                <div class="course-content">
+                    <div class="p-one">
+                        <h5 class="mb-0">Applied Mathematics</h5>
+                        <span class="course-price">$49.99</span>
+                    </div>
+                    <p class="course-grade mb-2">Grades 11-12</p>
+                    <p class="card-text">Dive into real-world applications of mathematical techniques in fields like physics, engineering, and technology.</p>
+                    <div class="p-one">
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">
+                                <img src="/assets/teacher12.svg" alt="Teacher">
+                            </div>
+                            <div>
+                                <div class="teacher-name">Ms.Fatima Ezzat</div>
+                            </div>
+                        </div>
+                        <button class="enroll-btn">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Social Studies Course -->
+        <div class="col-lg-4 col-md-6">
+            <div class="course-card">
+                <img src="/assets/course9.svg" alt="Social Studies course" class="course-img">
+                <div class="course-content">
+                    <div class="p-one">
+                        <h5 class="mb-0">Social Studies</h5>
+                        <span class="course-price">$49.99</span>
+                    </div>
+                    <p class="course-grade mb-2">Grades 7-9</p>
+                    <p class="card-text">Explore the foundations of geography, history, civics, and economics to understand how societies are shaped and interconnected.</p>
+                    <div class="p-one">
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">
+                                <img src="/assets/teacher9.svg" alt="Teacher">
+                            </div>
+                            <div>
+                                <div class="teacher-name">Mr. Thomas Bennett</div>
+                            </div>
+                        </div>
+                        <button class="enroll-btn">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pagination -->
+<div class="pagination-container">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span>&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link active" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span >&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4  mb-4 mb-lg-0 media">
+                <div class="footer-logo">coursenix</div>
+                <p class="footer-text">Simplifying the way students find courses and teachers manage classes.</p>
+            </div>
+            <div class="col-lg-4 mb-4 mb-lg-0 media">
+                <h5 class="mb-3 follow">Follow Us</h5>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4 media" >
+                <h5 class="mb-3">Contact us</h5>
+                <p class="footer-text">Phone number: +20 1549726354<br>Email: Dresley@gmail.com</p>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="footer-bottom mt-4">
+        <div class="container">
+            <p>© 2024 coursenix. All Rights reserved</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+<!-- Custom JavaScript -->
