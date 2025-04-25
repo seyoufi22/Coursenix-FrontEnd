@@ -146,7 +146,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  -webkit-animation: bottom-up 1s ease;
+  animation: bottom-up 1s ease;
 }
 @keyframes bottom-up {
   0% {
@@ -203,7 +203,7 @@ img {
   top: 30px;
   right: 0%;
   transform: translate(-50%, -50%);
-  -webkit-animation: top-bottom 1s ease;
+  animation: top-bottom 1s ease;
   z-index: 3;
 }
 
