@@ -4,12 +4,41 @@ document.addEventListener("DOMContentLoaded", () => {
   const fullNameInput = document.getElementById("full-name");
   const emailInput = document.getElementById("email");
   const phoneInput = document.getElementById("phone");
-  const parentPhoneInput = document.getElementById("parent-phone");
-  const gradeSelect = document.getElementById("grade");
   const passwordInput = document.getElementById("password");
   const confirmPasswordInput = document.getElementById("confirm-password");
   const termsCheckbox = document.getElementById("terms");
-  // const biographyTextarea = document.getElementById("biography");
+  const biographyTextarea = document.getElementById("biography");
+  const bioWordCountEl = document.getElementById("bio-word-count");
+  const MAX_BIO_WORDS = 200;
+  var cnt = 0;
+
+  biographyTextarea.addEventListener("input", updateBioWordCount);
+
+  function updateBioWordCount() {
+    // Split on whitespace, filter out empty strings
+    const words = biographyTextarea.value
+      .trim()
+      .split(/\s+/)
+      .filter((w) => w.length > 0);
+
+    const count = words.length;
+    bioWordCountEl.textContent = count;
+
+    // Optionally enforce max words
+    if (count > MAX_BIO_WORDS) {
+      // Trim to the first MAX_BIO_WORDS words
+      biographyTextarea.value = words.slice(0, MAX_BIO_WORDS).join(" ");
+      bioWordCountEl.textContent = MAX_BIO_WORDS;
+      displayError(
+        "biography-error",
+        `Biography must not exceed ${MAX_BIO_WORDS} words`
+      );
+    } else {
+      // Clear any previous error once back under the limit
+      document.getElementById("biography-error").textContent = "";
+    }
+    cnt = count;
+  }
 
   // Toggle password visibility
   document.querySelectorAll(".toggle-password").forEach((icon) => {
@@ -77,28 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
       phoneInput.classList.add("invalid-input");
     } else {
       phoneInput.classList.remove("invalid-input");
-    }
-
-    // Validate parent's phone number
-    if (!parentPhoneInput.value.trim()) {
-      displayError("parent-phone-error", "Parent's phone number is required");
-      isValid = false;
-      parentPhoneInput.classList.add("invalid-input");
-    } else if (!isValidPhone(parentPhoneInput.value)) {
-      displayError("parent-phone-error", "Please enter a valid phone number");
-      isValid = false;
-      parentPhoneInput.classList.add("invalid-input");
-    } else {
-      parentPhoneInput.classList.remove("invalid-input");
-    }
-
-    // Validate grade selection
-    if (!gradeSelect.value) {
-      displayError("grade-error", "Please select your grade");
-      isValid = false;
-      gradeSelect.classList.add("invalid-input");
-    } else {
-      gradeSelect.classList.remove("invalid-input");
     }
 
     // Validate password
@@ -175,27 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return isValid;
   };
-  // biographyTextarea.addEventListener("input", updateWordCount);
-  // function updateWordCount() {
-  //   const text = biographyTextarea.value.trim();
-  //   const wordCount = text === "" ? 0 : text.split(/\s+/).length;
-  //   wordCountElement.textContent = wordCount;
 
-  //   // Check if word count exceeds maximum
-  //   if (wordCount > 200) {
-  //     biographyError.textContent = "Biography must not exceed 200 words";
-  //     // Truncate text to 200 words
-  //     const words = text.split(/\s+/).slice(0, 200);
-  //     biographyTextarea.value = words.join(" ");
-  //     updateWordCount(); // Recount after truncation
-  //   } else {
-  //     biographyError.textContent = "";
-  //   }
-  // }
-  // if (biographyTextarea.value.trim() === "") {
-  //   biographyError.textContent = "Please provide a brief biography";
-  //   isValid = false;
-  // }
   // Form validation and submission
   form.addEventListener("submit", (e) => {
     e.preventDefault();
