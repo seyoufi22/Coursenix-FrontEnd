@@ -61,7 +61,7 @@ border: 2px solid white;
 }
 /* Section Styles */
 .section-title {
-font-size: 20px;
+font-size: 25px;
 font-weight: 600;
 color: #333;
 margin-bottom: 8px;
@@ -143,15 +143,6 @@ transform: scale(1.1);
 .time-input-container {
 position: relative;
 }
-/* 
-.time-icon {
-position: absolute;
-right: 10px;
-top: 50%;
-transform: translateY(-50%);
-pointer-events: none;
-color: #6c757d;
-} */
 
 /* Button Styles */
 .btn-primary {

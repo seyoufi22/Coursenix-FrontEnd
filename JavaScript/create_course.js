@@ -1,157 +1,119 @@
-// DOM Elements
 const gradeLevelsInput = document.getElementById('gradeLevels');
 const groupsSection = document.getElementById('groupsSection');
-const gradeNumber = document.getElementById('gradeNumber');
-const groupsContainer = document.getElementById('groupsContainer');
-const addGroupBtn = document.getElementById('addGroupBtn');
-const courseForm = document.getElementById('courseForm');
+const gradesContainer = document.getElementById('gradesContainer');
 
 // Variables
-let groupCounter = 0;
+let gradeGroupsMap = {};
 
 // Event Listeners
 gradeLevelsInput.addEventListener('input', handleGradeChange);
-addGroupBtn.addEventListener('click', addNewGroup);
 courseForm.addEventListener('submit', handleFormSubmit);
 
-// Functions
 function handleGradeChange() {
-const gradeLevel = parseInt(gradeLevelsInput.value);
+  const gradesText = gradeLevelsInput.value;
+  const grades = gradesText.split(',').map(g => g.trim()).filter(g => g !== '');
 
-if (gradeLevel > 0) {
-// Show groups section
-groupsSection.classList.remove('d-none');
-gradeNumber.textContent = gradeLevel;
+  gradesContainer.innerHTML = '';
+  gradeGroupsMap = {};
 
-// Clear existing groups
-groupsContainer.innerHTML = '';
-groupCounter = 0;
+  if (grades.length === 0) {
+    groupsSection.classList.add('d-none');
+    return;
+  }
 
-// Add first group by default
-addNewGroup();
-} else {
-// Hide groups section
-groupsSection.classList.add('d-none');
+  groupsSection.classList.remove('d-none');
+
+  grades.forEach(grade => {
+    const gradeBox = document.createElement('div');
+    gradeBox.className = 'grade-box mb-4 p-3 border rounded';
+    gradeBox.dataset.grade = grade;
+
+    gradeBox.innerHTML = `
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="mb-0">Grade ${grade}</h5>
+        <button type="button" class="btn btn-sm btn-success" onclick="addNewGroup('${grade}')">+ Add Group</button>
+      </div>
+      <div class="groups-container" id="groupList-${grade}"></div>
+    `;
+    gradesContainer.appendChild(gradeBox);
+
+    gradeGroupsMap[grade] = 0;
+    addNewGroup(grade); // default group
+  });
 }
-}
 
-function addNewGroup() {
-groupCounter++;
+function addNewGroup(grade) {
+  const groupContainer = document.getElementById(`groupList-${grade}`);
+  gradeGroupsMap[grade]++;
+  const groupIndex = gradeGroupsMap[grade];
 
-const groupDiv = document.createElement('div');
-groupDiv.className = 'group-card fade-in';
-groupDiv.dataset.groupId = groupCounter;
+  const groupDiv = document.createElement('div');
+  groupDiv.className = 'group-card fade-in p-3 my-2';
+  groupDiv.dataset.groupId = groupIndex;
 
-groupDiv.innerHTML = `
-<div class="group-header">
-    <h6 class="fw-bold">Group ${groupCounter}</h6>
-    <button type="button" class="delete-group" aria-label="Delete group">
-    <i class="bi bi-trash"></i>
-    </button>
-</div>
-<div class="row">
-    <div class="col-md-12 mb-3">
-    <label for="groupName${groupCounter}" class="form-label">Group Name</label>
-    <input type="text" class="form-control" id="groupName${groupCounter}" placeholder="Enter group name">
+  groupDiv.innerHTML = `
+    <div class="d-flex justify-content-between">
+      <strong class="group-title">Group ${groupIndex}</strong>
+      <button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteGroup(this)">🗑</button>
     </div>
-    <div class="col-md-12 mb-3">
-    <label for="groupDays${groupCounter}" class="form-label">Days</label>
-    <input type="text" class="form-control" id="groupDays${groupCounter}" placeholder="E.g: Tuesday & Thursday">
+    <div class="mb-2">
+      <label>Group Name</label>
+      <input type="text" class="form-control" placeholder="Enter group name">
     </div>
-    <div class="col-md-6 mb-3">
-    <label for="timeFrom${groupCounter}" class="form-label">Time From</label>
-    <div class="time-input-container">
-        <input type="time" class="form-control" id="timeFrom${groupCounter}">
+    <div class="mb-2">
+      <label>Days</label>
+      <input type="text" class="form-control" placeholder="Tuesday & Thursday">
     </div>
+    <div class="row mb-3">
+      <div class="col-md-6 mb-2">
+        <label>Time From</label>
+        <input type="time" class="form-control">
+      </div>
+      <div class="col-md-6 mb-2">
+        <label>Time To</label>
+        <input type="time" class="form-control">
+      </div>
     </div>
-    <div class="col-md-6 mb-3">
-    <label for="timeTo${groupCounter}" class="form-label">Time To</label>
-    <div class="time-input-container">
-        <input type="time" class="form-control" id="timeTo${groupCounter}">
-    </div>
-    </div>
-</div>
-`;
+  `;
 
-groupsContainer.appendChild(groupDiv);
-
-// Add event listener for delete button
-const deleteBtn = groupDiv.querySelector('.delete-group');
-deleteBtn.addEventListener('click', () => deleteGroup(groupDiv));
+  groupContainer.appendChild(groupDiv);
+  updateGroupNumbers(groupContainer);
 }
 
-function deleteGroup(groupElement) {
-// Add fade-out animation
-groupElement.style.opacity = '0';
-groupElement.style.transform = 'translateY(10px)';
-groupElement.style.transition = 'all 0.3s ease';
+function deleteGroup(button) {
+  const groupElement = button.closest('.group-card');
+  const groupsContainer = groupElement.parentElement;
+  const gradeBox = groupsContainer.closest('.grade-box');
 
-// Remove element after animation completes
-setTimeout(() => {
-groupElement.remove();
-updateGroupNumbers();
-}, 300);
+  const totalGroups = groupsContainer.querySelectorAll('.group-card').length;
+
+  if (totalGroups === 1) {
+    gradeBox.style.opacity = '0';
+    gradeBox.style.transform = 'translateY(10px)';
+    gradeBox.style.transition = 'all 0.3s ease';
+    setTimeout(() => {
+      gradeBox.remove();
+    }, 300);
+  } else {
+    groupElement.style.opacity = '0';
+    groupElement.style.transform = 'translateY(10px)';
+    groupElement.style.transition = 'all 0.3s ease';
+    setTimeout(() => {
+      groupElement.remove();
+      updateGroupNumbers(groupsContainer);
+    }, 300);
+  }
 }
 
-function updateGroupNumbers() {
-// Update group numbering
-const groupCards = groupsContainer.querySelectorAll('.group-card');
-groupCards.forEach((card, index) => {
-const headingElement = card.querySelector('h6');
-headingElement.textContent = `Group ${index + 1}`;
-});
+function updateGroupNumbers(container) {
+  const groupCards = container.querySelectorAll('.group-card');
+  groupCards.forEach((card, index) => {
+    const title = card.querySelector('.group-title');
+    title.textContent = `Group ${index + 1}`;
+  });
 }
 
-function handleFormSubmit(event) {
-event.preventDefault();
-
-// Basic form validation
-const courseTitle = document.getElementById('courseTitle').value;
-const gradeLevel = gradeLevelsInput.value;
-
-if (!courseTitle) {
-alert('Please enter a course title');
-return;
+function handleFormSubmit(e) {
+  e.preventDefault();
+  alert("Course submitted!");
 }
-
-if (!gradeLevel) {
-alert('Please enter a grade level');
-return;
-}
-
-// Collect form data
-const formData = {
-title: courseTitle,
-price: document.getElementById('coursePrice').value,
-description: document.getElementById('courseDescription').value,
-gradeLevel: gradeLevel,
-location: document.getElementById('location').value,
-studentsPerGroup: document.getElementById('studentsPerGroup').value,
-groups: []
-};
-
-// Collect groups data
-const groupCards = groupsContainer.querySelectorAll('.group-card');
-groupCards.forEach((card, index) => {
-const groupId = card.dataset.groupId;
-const group = {
-    name: document.getElementById(`groupName${groupId}`).value,
-    days: document.getElementById(`groupDays${groupId}`).value,
-    timeFrom: document.getElementById(`timeFrom${groupId}`).value,
-    timeTo: document.getElementById(`timeTo${groupId}`).value
-};
-formData.groups.push(group);
-});
-
-// For demonstration purposes, show the collected data
-console.log('Course Form Data:', formData);
-
-// In a real application, you would submit this data to a server
-alert('Course created successfully!');
-}
-
-// Initialize any necessary components
-document.addEventListener('DOMContentLoaded', function() {
-// Initialize tooltips or other Bootstrap components if needed
-// Example: const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-});

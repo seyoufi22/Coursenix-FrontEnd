@@ -78,7 +78,7 @@
             <div class="row mb-3">
                 <div class="col-md-12 mb-3">
                     <label for="gradeLevels" class="form-label">Grade Levels</label>
-                    <input type="number" class="form-control" id="gradeLevels" placeholder="Enter grade level" min="1">
+                    <input type="text" class="form-control" id="gradeLevels" placeholder="Enter grade levels">
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="location" class="form-label">Location</label>
@@ -94,15 +94,7 @@
         <!-- Groups/Grade -->
         <section id="groupsSection" class="mb-4 d-none">
             <h2 class="section-title">Groups/Grade</h2>
-            <div class="grade-header mb-3">
-                <h5 id="gradeTitle" class="fw-bold">Grade <span id="gradeNumber"></span></h5>
-                <button type="button" class="btn btn-primary btn-sm add-group-btn" id="addGroupBtn">
-                    <i class="bi bi-plus"></i> Add Group
-                </button>
-            </div>
-            <div id="groupsContainer">
-                <!-- Groups will be added here dynamically -->
-            </div>
+        <div id="gradesContainer"></div>
         </section>
 
         <!-- Submit Button -->
