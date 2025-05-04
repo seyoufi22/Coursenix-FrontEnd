@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduvera - Create Course</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2AA195;
+            --primary-dark: #22877c;
+            --secondary-color: #f8f9fa;
+            --text-color: #333;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7f8;
+            color: var(--text-color);
+        }
+        
+        .sidebar {
+            background-color: var(--primary-color);
+            color: white;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 224px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        /* Animation styles */
+        .fade-in {
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Notification styles */
+        #notification-container .alert {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: slideIn 0.3s forwards;
+        }
+        
+        @keyframes slideIn {
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .logo-container {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo-subtitle {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+        
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .nav-item {
+            padding: 10px 15px;
+            margin: 5px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .content-area {
+            margin-left: 224px;
+            padding: 20px 30px;
+            transition: all 0.3s ease;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 767.98px) {
+            .content-area {
+                margin-left: 0;
+                padding: 15px;
+            }
+            
+            .card-body {
+                padding: 20px;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .grade-group {
+                padding: 15px;
+            }
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+        
+        .card {
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        
+        .card-body {
+            padding: 30px;
+        }
+        
+        h2 {
+            color: #444;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .form-control {
+            border-radius: 5px;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+        }
+        
+        .form-control:focus {
+            box-shadow: 0 0 0 0.25rem rgba(42, 161, 149, 0.25);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 20px;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+        
+        .thumbnail-container {
+            background-color: #f8f9fa;
+            border: 1px dashed #ddd;
+            height: 160px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .grade-group {
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .grade-header {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .time-picker {
+            position: relative;
+        }
+        
+        .time-picker .form-control {
+            padding-right: 40px;
+        }
+        
+        .time-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+        }
+        
+        .delete-btn {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            color: #dc3545;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #6c757d;
+        }
+        
+        .submit-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+        
+        .sign-out {
+            position: absolute;
+            bottom: 20px;
+            left: 15px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .sign-out:hover {
+            opacity: 1;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-container">
+            <a href="#" class="logo">
+                <i class="fas fa-book-open"></i>
+                <div>
+                    <div>Eduvera</div>
+                    <div class="logo-subtitle">Booking Course</div>
+                </div>
+            </a>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <i class="fas fa-th-large"></i>
+                Dashboard
+            </li>
+            <li class="nav-item active">
+                <i class="fas fa-plus-circle"></i>
+                Create New course
+            </li>
+            <li class="nav-item">
+                <i class="fas fa-cog"></i>
+                Settings
+            </li>
+        </ul>
+        <a href="#" class="sign-out">
+            <i class="fas fa-sign-out-alt"></i>
+            Sign-out
+        </a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content-area">
+        <div class="header">
+            <h1>Create Course</h1>
+            <div class="user-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+
+        <form id="courseForm">
+            <!-- Basic Information Card -->
+            <div class="card">
+                <div class="card-body">
+                    <h2>Course Basic Information</h2>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="courseTitle" class="form-label">Course Title</label>
+                                <input type="text" class="form-control" id="courseTitle" placeholder="Enter course title">
+                            </div>
+                            <div class="form-group">
+                                <label for="coursePrice" class="form-label">Price ($)</label>
+                                <input type="number" class="form-control" id="coursePrice" placeholder="0.00">
+                            </div>
+                            <div class="form-group">
+                                <label for="courseDescription" class="form-label">Course Description</label>
+                                <textarea class="form-control" id="courseDescription" rows="4" placeholder="Tell what students will learn from in this course"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Course Thumbnail</label>
+                            <div class="thumbnail-container">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 24 24' fill='none' stroke='%23adb5bd' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Ccircle cx='8.5' cy='8.5' r='1.5'%3E%3C/circle%3E%3Cpolyline points='21 15 16 10 5 21'%3E%3C/polyline%3E%3C/svg%3E" alt="Placeholder">
+                            </div>
+                            <label for="imageUpload" class="btn btn-outline-secondary w-100">
+                                <i class="fas fa-upload me-2"></i>Upload Image
+                            </label>
+                            <input type="file" id="imageUpload" accept="image/*" style="display: none;"
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Details Card -->
+            <div class="card">
+                <div class="card-body">
+                    <h2>Course Details</h2>
+                    <div class="form-group">
+                        <label for="gradeLevels" class="form-label">Grade Levels</label>
+                        <input type="text" class="form-control" id="gradeLevels" placeholder="Enter grade level (e.g., 7)">
+                    </div>
+                    <div class="form-group">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="location" placeholder="Enter Course Location">
+                    </div>
+                    <div class="form-group">
+                        <label for="studentsPerGroup" class="form-label">Students/Group</label>
+                        <input type="number" class="form-control" id="studentsPerGroup" placeholder="Enter maximum number of students in each group">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Groups/Grade</label>
+                        <div id="gradeGroups">
+                            <!-- Grade groups will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="submit-container">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-plus-circle me-2"></i>Create Course
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap and JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gradeLevelsInput = document.getElementById('gradeLevels');
+            const gradeGroupsContainer = document.getElementById('gradeGroups');
+            const imageUpload = document.getElementById('imageUpload');
+            const thumbnailContainer = document.querySelector('.thumbnail-container');
+            
+            // Image upload functionality
+            imageUpload.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        // Replace the placeholder with the uploaded image
+                        thumbnailContainer.innerHTML = `<img src="${event.target.result}" alt="Course Thumbnail" style="max-width: 100%; max-height: 160px;">`;
+                    };
+                    reader.readAsDataURL(file);
+                    
+                    // Show success notification
+                    showNotification('Image uploaded successfully!', 'success');
+                }
+            });
+            
+            // Listen for input changes in the grade levels field
+            gradeLevelsInput.addEventListener('input', function() {
+                const gradeValue = this.value.trim();
+                
+                // Clear existing grade groups
+                gradeGroupsContainer.innerHTML = '';
+                
+                // If a valid grade is entered, create the grade group
+                if (gradeValue !== '') {
+                    createGradeGroup(gradeValue);
+                }
+            });
+            
+            // Function to create a grade group
+            function createGradeGroup(grade) {
+                const gradeGroup = document.createElement('div');
+                gradeGroup.className = 'grade-group';
+                gradeGroup.innerHTML = `
+                    <div class="grade-header">Grade ${grade}</div>
+                    <button type="button" class="delete-btn" aria-label="Remove group">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                    <div class="group-container" id="grade-${grade}-groups">
+                        ${createGroupForm(1)}
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-success mt-3 add-group-btn" data-grade="${grade}">
+                        <i class="fas fa-plus me-1"></i> Add Group
+                    </button>
+                `;
+                
+                gradeGroupsContainer.appendChild(gradeGroup);
+                
+                // Add event listener to the Add Group button
+                const addGroupBtn = gradeGroup.querySelector('.add-group-btn');
+                addGroupBtn.addEventListener('click', function() {
+                    const grade = this.getAttribute('data-grade');
+                    const groupContainer = document.getElementById(`grade-${grade}-groups`);
+                    const groupCount = groupContainer.querySelectorAll('.group-form').length + 1;
+                    
+                    const groupFormWrapper = document.createElement('div');
+                    groupFormWrapper.innerHTML = createGroupForm(groupCount);
+                    groupContainer.appendChild(groupFormWrapper.firstElementChild);
+                    
+                    // Add event listener to the new delete button
+                    const deleteBtn = groupContainer.lastElementChild.querySelector('.delete-group-btn');
+                    if (deleteBtn) {
+                        deleteBtn.addEventListener('click', function() {
+                            // Add animation before removing
+                            const groupForm = this.closest('.group-form');
+                            groupForm.style.transition = 'all 0.3s ease';
+                            groupForm.style.opacity = '0';
+                            groupForm.style.transform = 'translateY(-20px)';
+                            
+                            setTimeout(() => {
+                                groupForm.remove();
+                                // Renumber the remaining groups
+                                renumberGroups(groupContainer);
+                                showNotification('Group deleted successfully!', 'danger');
+                            }, 300);
+                        });
+                    }
+                    
+                    // Show success notification
+                    showNotification('New group added!', 'success');
+                });
+                
+                // Add event listener to the initial delete button if it exists
+                const deleteGroupBtn = gradeGroup.querySelector('.group-container .delete-group-btn');
+                if (deleteGroupBtn) {
+                    deleteGroupBtn.addEventListener('click', function() {
+                        // Add animation before removing
+                        const groupForm = this.closest('.group-form');
+                        groupForm.style.transition = 'all 0.3s ease';
+                        groupForm.style.opacity = '0';
+                        groupForm.style.transform = 'translateY(-20px)';
+                        
+                        setTimeout(() => {
+                            groupForm.remove();
+                            // Renumber the remaining groups
+                            const groupContainer = document.getElementById(`grade-${grade}-groups`);
+                            renumberGroups(groupContainer);
+                            showNotification('Group deleted successfully!', 'danger');
+                        }, 300);
+                    });
+                }
+                
+                // Add event listener to the delete grade button
+                const deleteGradeBtn = gradeGroup.querySelector('.delete-btn');
+                deleteGradeBtn.addEventListener('click', function() {
+                    // Add animation before removing
+                    gradeGroup.style.transition = 'all 0.4s ease';
+                    gradeGroup.style.opacity = '0';
+                    gradeGroup.style.transform = 'scale(0.95)';
+                    
+                    setTimeout(() => {
+                        gradeGroup.remove();
+                        showNotification('Grade group deleted successfully!', 'danger');
+                    }, 400);
+                });
+            }
+            
+            // Function to create a group form
+            function createGroupForm(groupNumber) {
+                return `
+                    <div class="group-form mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="mb-0">Group ${groupNumber}</h5>
+                            ${groupNumber > 1 ? '<button type="button" class="btn btn-sm btn-outline-danger delete-group-btn"><i class="fas fa-times"></i></button>' : ''}
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label">Group Name</label>
+                            <input type="text" class="form-control" placeholder="Enter group name" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label">Days</label>
+                            <input type="text" class="form-control" placeholder="E.g: Tuesday & Thursday" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Time From</label>
+                                    <div class="time-picker">
+                                        <input type="time" class="form-control" required>
+                                        <span class="time-icon"><i class="far fa-clock"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Time To</label>
+                                    <div class="time-picker">
+                                        <input type="time" class="form-control" required>
+                                        <span class="time-icon"><i class="far fa-clock"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Function to renumber the groups after deletion
+            function renumberGroups(container) {
+                const groups = container.querySelectorAll('.group-form');
+                groups.forEach((group, index) => {
+                    const groupNumber = index + 1;
+                    group.querySelector('h5').textContent = `Group ${groupNumber}`;
+                    
+                    // Show or hide delete button based on group number
+                    const deleteBtn = group.querySelector('.delete-group-btn');
+                    if (groupNumber === 1 && groups.length > 1 && !deleteBtn) {
+                        const btnContainer = group.querySelector('.d-flex');
+                        const deleteButton = document.createElement('button');
+                        deleteButton.className = 'btn btn-sm btn-outline-danger delete-group-btn';
+                        deleteButton.innerHTML = '<i class="fas fa-times"></i>';
+                        deleteButton.addEventListener('click', function() {
+                            // Add animation before removing
+                            const groupForm = this.closest('.group-form');
+                            groupForm.style.transition = 'all 0.3s ease';
+                            groupForm.style.opacity = '0';
+                            groupForm.style.transform = 'translateY(-20px)';
+                            
+                            setTimeout(() => {
+                                groupForm.remove();
+                                renumberGroups(container);
+                                showNotification('Group deleted successfully!', 'danger');
+                            }, 300);
+                        });
+                        btnContainer.appendChild(deleteButton);
+                    } else if (groupNumber === 1 && groups.length === 1 && deleteBtn) {
+                        deleteBtn.remove();
+                    } else if (groupNumber > 1 && !deleteBtn) {
+                        const btnContainer = group.querySelector('.d-flex');
+                        const deleteButton = document.createElement('button');
+                        deleteButton.className = 'btn btn-sm btn-outline-danger delete-group-btn';
+                        deleteButton.innerHTML = '<i class="fas fa-times"></i>';
+                        deleteButton.addEventListener('click', function() {
+                            // Add animation before removing
+                            const groupForm = this.closest('.group-form');
+                            groupForm.style.transition = 'all 0.3s ease';
+                            groupForm.style.opacity = '0';
+                            groupForm.style.transform = 'translateY(-20px)';
+                            
+                            setTimeout(() => {
+                                groupForm.remove();
+                                renumberGroups(container);
+                                showNotification('Group deleted successfully!', 'danger');
+                            }, 300);
+                        });
+                        btnContainer.appendChild(deleteButton);
+                    }
+                });
+            }
+            
+            // Function to show notifications
+            function showNotification(message, type) {
+                // Check if notification container exists, if not create it
+                let notificationContainer = document.getElementById('notification-container');
+                if (!notificationContainer) {
+                    notificationContainer = document.createElement('div');
+                    notificationContainer.id = 'notification-container';
+                    notificationContainer.style.position = 'fixed';
+                    notificationContainer.style.top = '20px';
+                    notificationContainer.style.right = '20px';
+                    notificationContainer.style.zIndex = '9999';
+                    document.body.appendChild(notificationContainer);
+                }
+                
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.className = `alert alert-${type} fade show`;
+                notification.innerHTML = `
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'danger' ? 'exclamation-circle' : 'info-circle'} me-2"></i>
+                        ${message}
+                        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                `;
+                
+                // Add to container
+                notificationContainer.appendChild(notification);
+                
+                // Auto dismiss after 3 seconds
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 150);
+                }, 3000);
+            }
+            
+            // Form submission handling
+            document.getElementById('courseForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simple validation
+                const courseTitle = document.getElementById('courseTitle').value;
+                const coursePrice = document.getElementById('coursePrice').value;
+                const courseDescription = document.getElementById('courseDescription').value;
+                const gradeLevels = document.getElementById('gradeLevels').value;
+                
+                if (!courseTitle || !coursePrice || !courseDescription || !gradeLevels) {
+                    showNotification('Please fill in all required fields', 'warning');
+                    return;
+                }
+                
+                // Show success message
+                showNotification('Course created successfully!', 'success');
+                
+                // Simulate form submission delay
+                const submitBtn = document.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Creating...';
+                
+                setTimeout(() => {
+                    // Reset form or redirect
+                    // this.reset(); // Uncomment to reset form
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                    
+                    // Optional: Redirect to dashboard
+                    // window.location.href = 'dashboard.html';
+                }, 2000);
+            });
+            
+            // Add responsiveness for small screens
+            function handleResponsive() {
+                const sidebar = document.querySelector('.sidebar');
+                const contentArea = document.querySelector('.content-area');
+                const windowWidth = window.innerWidth;
+                
+                if (windowWidth < 768) {
+                    sidebar.style.width = '0';
+                    sidebar.style.transform = 'translateX(-100%)';
+                    contentArea.style.marginLeft = '0';
+                } else {
+                    sidebar.style.width = '224px';
+                    sidebar.style.transform = 'translateX(0)';
+                    contentArea.style.marginLeft = '224px';
+                }
+            }
+            
+            // Initial call
+            handleResponsive();
+            
+            // Listen for window resize
+            window.addEventListener('resize', handleResponsive);
+            
+            // Toggle sidebar on small screens
+            document.addEventListener('click', function(e) {
+                const target = e.target;
+                if (target.closest('.logo-container') && window.innerWidth < 768) {
+                    const sidebar = document.querySelector('.sidebar');
+                    if (sidebar.style.transform === 'translateX(0px)') {
+                        sidebar.style.transform = 'translateX(-100%)';
+                    } else {
+                        sidebar.style.transform = 'translateX(0)';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
