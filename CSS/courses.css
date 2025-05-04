@@ -144,7 +144,7 @@ body {
     font-weight: 500;
 }
 
-.enroll-btn {
+.enroll-btn{
     color: var(--primary-color);
     border: var(--primary-color);
     border-radius: 8px;
@@ -154,8 +154,14 @@ body {
     background-color: white;
     transition: background-color 0.3s ease;
 }
-
-.enroll-btn:hover {
+a{
+    text-decoration: none;
+    color: var(--primary-color);
+}
+.enroll-btn:hover a{
+    color: white;
+}
+.enroll-btn:hover{
     background-color: var(--primary-dark);
     color: white;
 }
