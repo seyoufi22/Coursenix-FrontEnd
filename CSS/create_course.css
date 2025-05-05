@@ -17,7 +17,6 @@ background-color: var(--bg-light);
 .navbar-dark {
 background-color: var(--primary-color) !important;
 }
-
 .logo{
     width: 40px;
     height: 40px;
@@ -29,7 +28,7 @@ background-color: var(--primary-color) !important;
 .word{
     font-weight: bold;
     font-size: 25px;
-     color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .profile-btn {
@@ -44,17 +43,30 @@ height: 50px;
 object-fit: cover;
 border: 2px solid white;
 }
-.thumbnail-container button{
-    border: 1px solid var(--primary-color);
-    background-color: white ;
-    color: var(--primary-color);
-}
-.thumbnail-container button:hover{
-    
-    background-color: var(--primary-color) ;
-    color: white;
-}
 
+#img{
+    width: 200px;
+    height: 150px;
+}
+input[type="file"]{
+    display: none;
+}
+.file_up{
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color:white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+.file_up:hover{
+    background-color:var(--primary-color);
+    color: white;
+
+}
 .form-control:focus{
     outline: none;
     box-shadow: 0 0  2px var(--secondary-color) !important ;
@@ -195,3 +207,7 @@ animation: fadeIn 0.3s ease forwards;
     padding: 1rem;
 }
 }
+
+
+
+
