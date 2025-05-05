@@ -17,7 +17,6 @@ background-color: var(--bg-light);
 .navbar-dark {
 background-color: var(--primary-color) !important;
 }
-
 .logo{
     width: 40px;
     height: 40px;
@@ -29,7 +28,7 @@ background-color: var(--primary-color) !important;
 .word{
     font-weight: bold;
     font-size: 25px;
-     color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .profile-btn {

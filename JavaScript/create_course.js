@@ -117,8 +117,3 @@ function updateGroupNumbers(container) {
     title.textContent = `Group ${index + 1}`;
   });
 }
-
-function handleFormSubmit(e) {
-  e.preventDefault();
-  alert("Course submitted!");
-}
