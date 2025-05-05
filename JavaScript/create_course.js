@@ -5,7 +5,12 @@ const gradeNumber = document.getElementById('gradeNumber');
 const groupsContainer = document.getElementById('groupsContainer');
 const addGroupBtn = document.getElementById('addGroupBtn');
 const courseForm = document.getElementById('courseForm');
+let img=document.getElementById('img')
+let input=document.getElementById('input')
 
+input.addEventListener('change',function(){
+    img.src=URL.createObjectURL(input.files[0]);
+})
 // Variables
 let groupCounter = 0;
 
@@ -155,3 +160,5 @@ document.addEventListener('DOMContentLoaded', function() {
 // Initialize tooltips or other Bootstrap components if needed
 // Example: const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 });
+
+
