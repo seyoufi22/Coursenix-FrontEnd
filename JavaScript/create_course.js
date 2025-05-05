@@ -1,7 +1,12 @@
 const gradeLevelsInput = document.getElementById('gradeLevels');
 const groupsSection = document.getElementById('groupsSection');
 const gradesContainer = document.getElementById('gradesContainer');
+const img=document.getElementById('img')
+const input=document.getElementById('input')
 
+input.addEventListener('change',function(){
+    img.src=URL.createObjectURL(input.files[0]);
+})
 // Variables
 let gradeGroupsMap = {};
 
@@ -111,9 +116,4 @@ function updateGroupNumbers(container) {
     const title = card.querySelector('.group-title');
     title.textContent = `Group ${index + 1}`;
   });
-}
-
-function handleFormSubmit(e) {
-  e.preventDefault();
-  alert("Course submitted!");
 }
