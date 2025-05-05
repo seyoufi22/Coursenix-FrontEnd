@@ -1,8 +1,8 @@
 const gradeLevelsInput = document.getElementById('gradeLevels');
 const groupsSection = document.getElementById('groupsSection');
 const gradesContainer = document.getElementById('gradesContainer');
-let img=document.getElementById('img')
-let input=document.getElementById('input')
+const img=document.getElementById('img')
+const input=document.getElementById('input')
 
 input.addEventListener('change',function(){
     img.src=URL.createObjectURL(input.files[0]);

@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coursenix</title>
-    <link rel="stylesheet" href="../CSS/student-sign-up.css" />
+    <link rel="stylesheet" href="/CSS/sign-up.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
   </head>
   <body>
@@ -26,12 +26,11 @@
         </div>
       </div>
     </header>
+    <!-- form -->
     <main>
       <div class="form-container">
         <h1>Start your journey</h1>
-        <p class="subtitle">
-          Create your student account and discover thousands of courses
-        </p>
+        <p class="subtitle">Create your teacher account</p>
         <form id="signup-form" novalidate>
           <div class="form-group">
             <input
@@ -68,34 +67,6 @@
             <span class="error-message" id="phone-error"></span>
           </div>
 
-          <div class="form-group">
-            <input
-              type="tel"
-              id="parent-phone"
-              name="parent-phone"
-              placeholder="Parent's phone number"
-              required
-              pattern="[+]?[\s./0-9]{10,15}"
-            />
-            <span class="error-message" id="parent-phone-error"></span>
-          </div>
-
-          <div class="form-group">
-            <div class="select-wrapper">
-              <select id="grade" name="grade" required>
-                <option value="" disabled selected>Select your grade</option>
-                <option value="7">Grade 7</option>
-                <option value="8">Grade 8</option>
-                <option value="9">Grade 9</option>
-                <option value="10">Grade 10</option>
-                <option value="11">Grade 11</option>
-                <option value="12">Grade 12</option>
-              </select>
-              <i class="fas fa-chevron-down"></i>
-            </div>
-            <span class="error-message" id="grade-error"></span>
-          </div>
-
           <div class="form-group password-group">
             <input
               type="password"
@@ -126,7 +97,20 @@
             ></i>
             <span class="error-message" id="confirm-password-error"></span>
           </div>
-
+          <div class="form-group">
+            <label for="biography" class="bio-label">Brief Biography</label>
+            <textarea
+              id="biography"
+              name="biography"
+              placeholder="Tell students a bit about yourself and your teaching approach (max 200 words)"
+              maxlength="1000"
+              required
+            ></textarea>
+            <div class="word-counter">
+              <span id="bio-word-count">0</span>/200 words
+            </div>
+            <div class="error-message" id="biographyError"></div>
+          </div>
           <div class="form-group checkbox-group">
             <input type="checkbox" id="terms" name="terms" required />
             <label for="terms"
@@ -212,6 +196,6 @@
         </div>
       </div>
     </footer>
-    <script src="/JavaScript/student-sign-up.js"></script>
+    <script src="/JavaScript/teaher-sign-up.js"></script>
   </body>
 </html>
