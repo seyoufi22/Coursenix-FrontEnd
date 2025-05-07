@@ -19,7 +19,7 @@ body {
     position: relative;
     z-index: 100;
 }
-
+/*nav*/
 .logo {
     display: flex;
     align-items: center;
