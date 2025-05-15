@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eduvera - Dashboard</title>
+    <title>Coursenix - Student</title>
     <link rel="stylesheet" href="/CSS/student-dashboard.css">
 </head>
 <body>
@@ -47,77 +47,221 @@
     <!-- Subheader -->
     <div class="subheader">
         <ul class="sub-nav">
-            <li><a href="#" class="active">Dashboard</a></li>
-            <li><a href="/HTML/student-settings.html" >Settings</a></li>
+            <li><a href="#" class="active">Courses</a></li>
+            <li><a href="/HTML/student-settings.html">Settings</a></li>
         </ul>
     </div>
     <main>
-        <h2 class="page-title">Enrolled Courses</h2>
+        <h2 class="page-title">My Courses</h2>
 
-        <div class="courses-grid">
+        <div class="courses-grid" id="coursesGrid">
             <!-- Mathematics Course -->
             <div class="course-card" data-course="mathematics">
-                <div class="course-content">
+                <div class="course-header">
                     <h3>Mathematics</h3>
-                    <p class="grade">Grades 7-9</p>
-                    <p class="description">Build a strong foundation in essential mathematical concepts through interactive lessons and practice problems</p>
+                    <div class="teacher">
+                        <div class="teacher-avatar"></div>
+                        <span class="teacher-name">Mr. Ahmed Hassan</span>
+                    </div>
                 </div>
-                <div class="teacher">
-                    <div class="teacher-avatar"></div>
-                    <span class="teacher-name">Mr.Ahmed Hassan</span>
+                <div class="course-content">
+                    <div class="course-info">
+                        <div class="course-info-item">
+                            <i class="icon group-icon"></i>
+                            <div class="course-info-label">Group:</div>
+                            <div class="course-info-value">Group 1</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon location-icon"></i>
+                            <div class="course-info-label">Location:</div>
+                            <div class="course-info-value">Qena City - Al Safwa Educational Center</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon days-icon"></i>
+                            <div class="course-info-label">Days:</div>
+                            <div class="course-info-value">Tuesday & Thursday</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon time-icon"></i>
+                            <div class="course-info-label">Time:</div>
+                            <div class="course-info-value">1:00 PM - 3:00 PM</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon absence-icon"></i>
+                            <div class="course-info-label">Absence:</div>
+                            <div class="course-info-value">
+                                <span class="absence-ratio low">5%</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Science Course -->
             <div class="course-card" data-course="science">
-                <div class="course-content">
+                <div class="course-header">
                     <h3>Science</h3>
-                    <p class="grade">Grade 9</p>
-                    <p class="description">Explore physics, chemistry, and biology with hands-on experiments and real-world applications to on experiments</p>
+                    <div class="teacher">
+                        <div class="teacher-avatar"></div>
+                        <span class="teacher-name">Mr. Refaat</span>
+                    </div>
                 </div>
-                <div class="teacher">
-                    <div class="teacher-avatar"></div>
-                    <span class="teacher-name">Ms. Laura Bennett</span>
+                <div class="course-content">
+                    <div class="course-info">
+                        <div class="course-info-item">
+                            <i class="icon group-icon"></i>
+                            <div class="course-info-label">Group:</div>
+                            <div class="course-info-value">Group 2</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon location-icon"></i>
+                            <div class="course-info-label">Location:</div>
+                            <div class="course-info-value">Qena City - Al Safwa Educational Center</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon days-icon"></i>
+                            <div class="course-info-label">Days:</div>
+                            <div class="course-info-value">Monday & Wednesday</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon time-icon"></i>
+                            <div class="course-info-label">Time:</div>
+                            <div class="course-info-value">4:00 PM - 6:00 PM</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon absence-icon"></i>
+                            <div class="course-info-label">Absence:</div>
+                            <div class="course-info-value">
+                                <span class="absence-ratio medium">12%</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            
             <!-- English Course -->
             <div class="course-card" data-course="english">
-                <div class="course-content">
+                <div class="course-header">
                     <h3>English</h3>
-                    <p class="grade">Grades 8-9</p>
-                    <p class="description">Strengthen reading comprehension, grammar, and creative writing skills through engaging texts and activities</p>
+                    <div class="teacher">
+                        <div class="teacher-avatar"></div>
+                        <span class="teacher-name">Mr. Edmon</span>
+                    </div>
                 </div>
-                <div class="teacher">
-                    <div class="teacher-avatar"></div>
-                    <span class="teacher-name">Ms. Emily Carter</span>
+                <div class="course-content">
+                    <div class="course-info">
+                        <div class="course-info-item">
+                            <i class="icon group-icon"></i>
+                            <div class="course-info-label">Group:</div>
+                            <div class="course-info-value">Group 3</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon location-icon"></i>
+                            <div class="course-info-label">Location:</div>
+                            <div class="course-info-value">Qena City - Al Safwa Educational Center</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon days-icon"></i>
+                            <div class="course-info-label">Days:</div>
+                            <div class="course-info-value">Sunday & Wednesday</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon time-icon"></i>
+                            <div class="course-info-label">Time:</div>
+                            <div class="course-info-value">5:00 PM - 7:00 PM</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon absence-icon"></i>
+                            <div class="course-info-label">Absence:</div>
+                            <div class="course-info-value">
+                                <span class="absence-ratio low">0%</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Arabic Course -->
             <div class="course-card" data-course="arabic">
-                <div class="course-content">
+                <div class="course-header">
                     <h3>Arabic</h3>
-                    <p class="grade">Grades 7-8</p>
-                    <p class="description">Develop a deep appreciation of the Arabic language through comprehensive lessons in grammar, vocabulary, literature, and creative writing</p>
+                    <div class="teacher">
+                        <div class="teacher-avatar"></div>
+                        <span class="teacher-name">Mr. Beshoy</span>
+                    </div>
                 </div>
-                <div class="teacher">
-                    <div class="teacher-avatar"></div>
-                    <span class="teacher-name">Ms.Hala Kamel</span>
+                <div class="course-content">
+                    <div class="course-info">
+                        <div class="course-info-item">
+                            <i class="icon group-icon"></i>
+                            <div class="course-info-label">Group:</div>
+                            <div class="course-info-value">Group 4</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon location-icon"></i>
+                            <div class="course-info-label">Location:</div>
+                            <div class="course-info-value">Qena City - Al Safwa Educational Center</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon days-icon"></i>
+                            <div class="course-info-label">Days:</div>
+                            <div class="course-info-value">Monday & Thursday</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon time-icon"></i>
+                            <div class="course-info-label">Time:</div>
+                            <div class="course-info-value">3:00 PM - 5:00 PM</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon absence-icon"></i>
+                            <div class="course-info-label">Absence:</div>
+                            <div class="course-info-value">
+                                <span class="absence-ratio low">8%</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Social Studies Course -->
             <div class="course-card" data-course="social-studies">
-                <div class="course-content">
+                <div class="course-header">
                     <h3>Social Studies</h3>
-                    <p class="grade">Grades 7-9</p>
-                    <p class="description">Explore the foundations of geography, history, civics, and economics to understand how societies are shaped and interconnected.</p>
+                    <div class="teacher">
+                        <div class="teacher-avatar"></div>
+                        <span class="teacher-name">Mr. Tarek</span>
+                    </div>
                 </div>
-                <div class="teacher">
-                    <div class="teacher-avatar"></div>
-                    <span class="teacher-name">Mr. Thomas Bennett</span>
+                <div class="course-content">
+                    <div class="course-info">
+                        <div class="course-info-item">
+                            <i class="icon group-icon"></i>
+                            <div class="course-info-label">Group:</div>
+                            <div class="course-info-value">Group 5</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon location-icon"></i>
+                            <div class="course-info-label">Location:</div>
+                            <div class="course-info-value">Qena City - Al Safwa Educational Center</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon days-icon"></i>
+                            <div class="course-info-label">Days:</div>
+                            <div class="course-info-value">Sunday & Tuesday</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon time-icon"></i>
+                            <div class="course-info-label">Time:</div>
+                            <div class="course-info-value">2:00 PM - 4:00 PM</div>
+                        </div>
+                        <div class="course-info-item">
+                            <i class="icon absence-icon"></i>
+                            <div class="course-info-label">Absence:</div>
+                            <div class="course-info-value">
+                                <span class="absence-ratio medium">15%</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -192,26 +336,6 @@
     </div>
   </footer>
 
-    <!-- Course Details Modal -->
-    <div id="courseModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h3 id="modalCourseName"></h3>
-            <p id="modalLocation"></p>
-            <p id="modalDescription"></p>
-            <div class="enrolled-group">
-                <h4>Your Enrolled Group</h4>
-                <div class="group-details">
-                    <h5 id="groupName"></h5>
-                    <ul>
-                        <li id="groupDays"></li>
-                        <li id="groupTime"></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="/JavaScript/student-dashboard.js"></script>
 </body>
-</html>
+</html> 
