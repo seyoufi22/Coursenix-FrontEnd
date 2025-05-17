@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const passwordInput = document.getElementById("password");
   const confirmPasswordInput = document.getElementById("confirm-password");
   const termsCheckbox = document.getElementById("terms");
-  // const biographyTextarea = document.getElementById("biography");
 
   // Toggle password visibility
   document.querySelectorAll(".toggle-password").forEach((icon) => {
@@ -175,27 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return isValid;
   };
-  // biographyTextarea.addEventListener("input", updateWordCount);
-  // function updateWordCount() {
-  //   const text = biographyTextarea.value.trim();
-  //   const wordCount = text === "" ? 0 : text.split(/\s+/).length;
-  //   wordCountElement.textContent = wordCount;
-
-  //   // Check if word count exceeds maximum
-  //   if (wordCount > 200) {
-  //     biographyError.textContent = "Biography must not exceed 200 words";
-  //     // Truncate text to 200 words
-  //     const words = text.split(/\s+/).slice(0, 200);
-  //     biographyTextarea.value = words.join(" ");
-  //     updateWordCount(); // Recount after truncation
-  //   } else {
-  //     biographyError.textContent = "";
-  //   }
-  // }
-  // if (biographyTextarea.value.trim() === "") {
-  //   biographyError.textContent = "Please provide a brief biography";
-  //   isValid = false;
-  // }
   // Form validation and submission
   form.addEventListener("submit", (e) => {
     e.preventDefault();

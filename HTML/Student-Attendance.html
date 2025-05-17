@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduvera - Student Attendance</title>
+    <link rel="stylesheet" href="../CSS/Student-Attendance.css">
+    <script src="../JavaScript/Student-Attendance.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="../assets/logo.svg" alt="Eduvera Logo" class="logo">
+            <div class="logo-text">
+                <h1>Coursenix</h1>
+                <p>Online booking Course</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home">Home</a></li>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+        <div class="profile">
+            <img src="../assets/teacher1.svg" alt="Profile" class="profile-img">
+        </div>
+    </header>
+
+    <main>
+        <div class="attendance-container">
+            <h2>Students Attendance</h2>
+            
+            <div class="group-info">
+                <div class="course-details">
+                    <div class="course-name">
+                        <span class="course-label">Course:</span>
+                        <span class="course-value">Science</span>
+                    </div>
+                    <div class="grade-level">
+                        <span class="grade-label">Grade:</span>
+                        <span class="grade-value">6</span>
+                    </div>
+                    <div class="group">
+                        <span class="group-label">Group:</span>
+                        <span class="group-value">1</span>
+                    </div>
+                </div>
+                <div class="schedule">
+                    <div class="day">
+                        <span class="calendar-icon">📅</span>
+                        <span>Tuesday & Thursday</span>
+                    </div>
+                    <div class="time">
+                        <span class="time-icon">🕔</span>
+                        <span>1:00 PM - 3:00 PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <table class="attendance-table">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Phone Number</th>
+                        <th>Parent's Phone</th>
+                        <th>Absence %</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ali Mohamed</td>
+                        <td>+20 123 456 7890</td>
+                        <td>+20 123 456 7891</td>
+                        <td><span class="absence medium">25%</span></td>
+                        <td><button class="delete-btn">&#10060</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="button-group">
+                <button class="cancel-btn">Cancel</button>
+                <button class="save-btn">Save</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2023 Eduvera. All Rights reserved</p>
+    </footer>
+</body>
+</html> 
