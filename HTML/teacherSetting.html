@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <title>Eduvera - Account Settings</title>
     <link href="../CSS/teacherSetting.css" rel="stylesheet">
 </head>
@@ -88,39 +90,55 @@
         <h1>Change Password</h1>
         <div class="form-group">
             <label for="currentPassword">Current Password</label>
-            <div class="password-field">
-                <input type="password" id="currentPassword" placeholder="Password">
-                <div class="eye-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
-                </div>
-            </div>
+             <div class="form-group password-group">
+                    <input
+                      type="password"
+                      id="current-password"
+                      name="password"
+                      placeholder="Current password"
+                      required
+                      minlength="8"
+                    />
+                    <i
+                      class="far fa-eye-slash toggle-password"
+                      data-target="current-password"
+                    ></i>
+                    <span class="error-message" id="password-error"></span>
+                  </div>
+            
         </div>
         <div class="form-group">
             <label for="newPassword">New Password</label>
-            <div class="password-field">
-                <input type="password" id="newPassword" placeholder="Password">
-                <div class="eye-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
-                </div>
-            </div>
+               <div class="form-group password-group">
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      placeholder="password"
+                      minlength="8"
+                    />
+                    <i
+                      class="far fa-eye-slash toggle-password"
+                      data-target="password"
+                    ></i>
+                    <span class="error-message" id="password-error"></span>
+                  </div>
         </div>
         <div class="form-group">
             <label for="confirmPassword">Confirm Password</label>
-            <div class="password-field">
-                <input type="password" id="confirmPassword" placeholder="Confirm new password">
-                <div class="eye-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
-                </div>
-            </div>
+               <div class="form-group password-group">
+                    <input
+                      type="password"
+                      id="confirm-password"
+                      name="confirm-password"
+                      placeholder="Confirm Password"
+                    />
+                    <i
+                      class="far fa-eye-slash toggle-password"
+                      data-target="confirm-password"
+                    ></i>
+                    <span class="error-message" id="confirm-password-error"></span>
+                  </div>
         </div>
 
         <button class="save-btn">Save Changes</button>
@@ -147,18 +165,6 @@ document.querySelector('.dropdown-content').addEventListener('click', function(e
   e.stopPropagation();
 });
 
-        // Toggle password visibility
-        document.querySelectorAll('.toggle-password').forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                const input = this.previousElementSibling;
-                if (input.type === 'password') {
-                    input.type = 'text';
-                } else {
-                    input.type = 'password';
-                }
-            });
-        });
-
         // Profile dropdown functionality (optional enhancement)
         const profileDropdown = document.querySelector('.profile-dropdown');
         const dropdownMenu = document.querySelector('.dropdown-menu');
@@ -174,5 +180,6 @@ document.querySelector('.dropdown-content').addEventListener('click', function(e
             }
         });
     </script>
+    <script src="../JavaScript/teacher-settings.js"></script>
 </body>
 </html>
