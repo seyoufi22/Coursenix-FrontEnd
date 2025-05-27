@@ -5,30 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coursenix</title>
     <link rel="stylesheet" type="text/css" href="/CSS/home.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/nav-bar.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   </head>
   <body>
     <!-- Header Section -->
-    <header class="header">
-      <div class="container">
+    <nav class="navbar">
         <div class="logo-container">
-          <a href="#" class="logo">
-            <img src="/assets/logo.svg" alt="Coursenix Logo" />
-            <span>Coursenix</span>
-          </a>
+            <img src="/assets/logo.svg" alt="Logo" class="logo">
+            <span class="website-name">Coursenix</span>
         </div>
-        <nav class="navigation">
-          <ul>
-            <li><a href="/HTML/home.html" class="active">Home</a></li>
-            <li><a href="../HTML/courses.html">Courses</a></li>
-            <li><a href="#Footer">Contact</a></li>
-            <li><a href="#Footer">About</a></li>
-          </ul>
-        </nav>
-        <div class="sign-in-container">
-          <a href="../HTML/sign-in.html" class="btn sign-in-btn">Sign in</a>
+
+        <div class="nav-links">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">Courses</a>
+            <a href="#" class="nav-link">About Us</a>
+            <a href="#" class="nav-link">Contact Us</a>
         </div>
-      </div>
-    </header>
+
+        <div class="auth-section">
+            <button class="sign-in-btn">Sign In</button>
+            <div class="profile-menu">
+                <button class="profile-btn">
+                    <span class="profile-avatar">J</span>
+                    <span class="profile-name">John Doe</span>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Profile</a>
+                    <a href="#" class="dropdown-item">Settings</a>
+                    <a href="#" class="dropdown-item">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -194,5 +203,6 @@
         </div>
       </div>
     </footer>
+  <script src="/JavaScript/nav-bar.js"></script>
   </body>
 </html>
