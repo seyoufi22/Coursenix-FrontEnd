@@ -1,50 +1,83 @@
-const gradeLevelsInput = document.getElementById('gradeLevels');
+const gradeDropdownButton = document.getElementById('gradeDropdownButton');
+const gradeCheckboxes = document.querySelectorAll('.grade-checkbox');
+const gradeItems = document.querySelectorAll('.grade-item');
 const groupsSection = document.getElementById('groupsSection');
 const gradesContainer = document.getElementById('gradesContainer');
-const img=document.getElementById('img')
-const input=document.getElementById('input')
+const img = document.getElementById('img');
+const input = document.getElementById('input');
 
-input.addEventListener('change',function(){
-    img.src=URL.createObjectURL(input.files[0]);
-})
+input.addEventListener('change', function() {
+    img.src = URL.createObjectURL(input.files[0]);
+});
+
 // Variables
 let gradeGroupsMap = {};
 
 // Event Listeners
-gradeLevelsInput.addEventListener('input', handleGradeChange);
-courseForm.addEventListener('submit', handleFormSubmit);
+gradeItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+        // Prevent the click from immediately closing the dropdown
+        e.stopPropagation();
+        
+        // Find the checkbox within this item
+        const checkbox = this.querySelector('.grade-checkbox');
+        // Toggle the checkbox
+        checkbox.checked = !checkbox.checked;
+        // Trigger the change event
+        checkbox.dispatchEvent(new Event('change'));
+    });
+});
+
+gradeCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', handleGradeChange);
+});
+
+function updateDropdownButtonText() {
+    const selectedGrades = Array.from(gradeCheckboxes)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => `Grade ${checkbox.value}`);
+    
+    if (selectedGrades.length === 0) {
+        gradeDropdownButton.textContent = 'Select Grades';
+    } else {
+        gradeDropdownButton.textContent = selectedGrades.join(', ');
+    }
+}
 
 function handleGradeChange() {
-  const gradesText = gradeLevelsInput.value;
-  const grades = gradesText.split(',').map(g => g.trim()).filter(g => g !== '');
+    const selectedGrades = Array.from(gradeCheckboxes)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
 
-  gradesContainer.innerHTML = '';
-  gradeGroupsMap = {};
+    gradesContainer.innerHTML = '';
+    gradeGroupsMap = {};
 
-  if (grades.length === 0) {
-    groupsSection.classList.add('d-none');
-    return;
-  }
+    if (selectedGrades.length === 0) {
+        groupsSection.classList.add('d-none');
+        return;
+    }
 
-  groupsSection.classList.remove('d-none');
+    groupsSection.classList.remove('d-none');
 
-  grades.forEach(grade => {
-    const gradeBox = document.createElement('div');
-    gradeBox.className = 'grade-box mb-4 p-3 border rounded';
-    gradeBox.dataset.grade = grade;
+    selectedGrades.forEach(grade => {
+        const gradeBox = document.createElement('div');
+        gradeBox.className = 'grade-box mb-4 p-3 border rounded';
+        gradeBox.dataset.grade = grade;
 
-    gradeBox.innerHTML = `
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <h5 class="mb-0">Grade ${grade}</h5>
-        <button type="button" class="btn btn-sm btn-success" onclick="addNewGroup('${grade}')">+ Add Group</button>
-      </div>
-      <div class="groups-container" id="groupList-${grade}"></div>
-    `;
-    gradesContainer.appendChild(gradeBox);
+        gradeBox.innerHTML = `
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="mb-0">Grade ${grade}</h5>
+                <button type="button" class="btn btn-sm btn-success" onclick="addNewGroup('${grade}')">+ Add Group</button>
+            </div>
+            <div class="groups-container" id="groupList-${grade}"></div>
+        `;
+        gradesContainer.appendChild(gradeBox);
 
-    gradeGroupsMap[grade] = 0;
-    addNewGroup(grade); // default group
-  });
+        gradeGroupsMap[grade] = 0;
+        addNewGroup(grade); // default group
+    });
+
+    updateDropdownButtonText();
 }
 
 function addNewGroup(grade) {
