@@ -1,5 +1,4 @@
- // Add functionality for search
-        document.querySelector('.search-box input').addEventListener('input', function(e) {
+document.querySelector('.search-box input').addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase();
             const rows = document.querySelectorAll('.table tbody tr');
             
@@ -32,7 +31,7 @@
                 }
             });
         });
-         //ttt
+
         // Add functionality for pagination
         document.querySelectorAll('.pagination button').forEach(btn => {
             btn.addEventListener('click', function() {

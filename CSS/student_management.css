@@ -1,4 +1,4 @@
- * {
+* {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -24,7 +24,7 @@
             align-items: center;
             gap: 0.5rem;
             font-weight: 600;
-            color: #26a69a;
+            color: #2563eb;
         }
 
         .logo::before {
@@ -142,7 +142,7 @@
             padding: 1.5rem;
             border-bottom: 1px solid #e5e7eb;
         }
-/*search*/
+
        .search-box {
     position: relative;
     margin-top: 28px;
@@ -160,11 +160,11 @@
     padding-left: 35px;
 }
 
+
         .table {
             width: 100%;
             border-collapse: collapse;
         }
-        
 
         .table th {
             background: #f9fafb;
@@ -191,6 +191,7 @@
             gap: 0.75rem;
         }
 
+        
         .student-avatar {
             width: 36px;
             height: 36px;
@@ -247,7 +248,7 @@
         }
 
         .action-btn.unblock:hover {
-            background: #1f8d82;
+            background: #1e847a;
         }
 
         .pagination {
